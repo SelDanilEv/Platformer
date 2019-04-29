@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// пэрвая
+
 public class Bullet : MonoBehaviour
 {
-    private GameObject parent; //comment 1
+    private GameObject parent;
     public GameObject Parent { set { parent = value; } get { return parent; } }
-    private float speed = 10.0F;
+    private float speed  = 10.0F;
     private Vector3 direction;
     public Vector3 Direction { set { direction = value; } }
 
@@ -14,8 +14,7 @@ public class Bullet : MonoBehaviour
 
     public Color Color
     {
-        // WE go
-        // Here we go!
+
         set { sprite.color = value; }
 
     }
@@ -30,23 +29,20 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject, 1.4F);
     }
-    
 
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
     }
 
-
-
-private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        Bullet1 bullet1 = collider.GetComponent<Bullet1>();
-        
         Unit unit = collider.GetComponent<Unit>();
-        if (unit && unit.gameObject != parent || bullet1)
+        if (unit && unit.gameObject != parent)
         {
-            Destroy(gameObject); // comment 2
+            Destroy(gameObject);
         }
+
     }
+
 }
