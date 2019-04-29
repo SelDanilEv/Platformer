@@ -13,29 +13,23 @@ public class ShootableMonster : Monster
 
     private Bullet bullet;
 
-
     protected override void Awake()
     {
+
         bullet = Resources.Load<Bullet>("Bullet");
     }
 
     protected override void Start()
     {
-        InvokeRepeating("Shoot", rate, rate);
+        InvokeRepeating("Shoot",rate , rate);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
-        Bullet1 bullet1 = collider.GetComponent<Bullet1>();
-
         Unit unit = collider.GetComponent<Unit>();
-        if (bullet1)
-        {
-            ReceiveDamage();
-        }
         if (unit is Character)
         {
-            if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.6F)
+            if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.3F)
                 ReceiveDamage();
             else unit.ReceiveDamage();
         }
@@ -50,5 +44,7 @@ public class ShootableMonster : Monster
         newBullet.Parent = gameObject;
         newBullet.Direction = -newBullet.transform.right;
         newBullet.Color = bulletColor;
+
     }
+    
 }

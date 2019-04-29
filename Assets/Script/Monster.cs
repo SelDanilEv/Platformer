@@ -9,20 +9,22 @@ public class Monster : Unit
     protected virtual void Update() { }
     protected virtual void OnTriggerEnter2D(Collider2D collider)
     {
-
-        Bullet1 bullet1 = collider.GetComponent<Bullet1>();
         Bullet bullet = collider.GetComponent<Bullet>();
 
-        if (bullet || bullet1)
+        if (bullet)
         {
             ReceiveDamage();
         }
 
         Character Character = collider.GetComponent<Character>();
+
         if (Character)
         {
             Character.ReceiveDamage();
         }
+
     }
+
+
 }
 

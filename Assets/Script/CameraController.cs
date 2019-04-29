@@ -6,7 +6,6 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField]
     private float speed = 2.0F;
-
     [SerializeField]
     private Transform target;
 
